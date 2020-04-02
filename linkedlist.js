@@ -8,10 +8,12 @@ class _Node {
 
 class LinkedList {
   constructor(){
+    this.length = 0;
     this.head = null;
   }
   insertFirst(item){
     this.head = new _Node(item,this.head);
+    this.length++;
   }
   insertLast(item) {
     if(this.head === null){
@@ -22,6 +24,7 @@ class LinkedList {
       tempNode = tempNode.next;
     }
     tempNode.next = new _Node(item,null);
+    this.length++
   }
   insertBefore(item, key) {
     if (!this.head) {
@@ -41,6 +44,7 @@ class LinkedList {
       return;
     }
     previousNode.next = new _Node(item, currNode);
+    this.length++;
   }
   insertAfter(item, key) {
     if (!this.head) {
@@ -57,6 +61,7 @@ class LinkedList {
       return;
     }
     currNode.next = new _Node(item, nextNode);
+    this.length++;
   }
   insertAt(item, position){
     if (!this.head) {
@@ -73,7 +78,8 @@ class LinkedList {
       return;
     }
 
-    currNode.next = new _Node(item, nextNode)
+    currNode.next = new _Node(item, nextNode);
+    this.length++;
   }
   remove(item){
     if (!this.head) {
@@ -94,6 +100,7 @@ class LinkedList {
       return;
     }
     previousNode.next = currNode.next;
+    this.length--;
   }
   find(item){
     let currNode = this.head;
@@ -112,7 +119,7 @@ class LinkedList {
   }
 }
 
-function main() {
+function setSLL() {
   let SLL = new LinkedList();
   SLL.insertFirst('Starbuck')
   SLL.insertFirst('Husker')
@@ -124,9 +131,58 @@ function main() {
   SLL.insertAfter('Hotdog', 'Helo')
   SLL.insertAt('Kat', 3)
   SLL.remove('Tauhida')
-  SLL.remove('squirrel')
-  console.dir(SLL)
   return SLL;
+}
+
+function size(ll) {
+  console.log(ll.length);
+}
+
+function display(ll){
+  console.log(ll)
+}
+
+function isEmpty(ll) {
+  if (ll.head === null) {
+    console.log('True')
+  }
+  console.log('false')
+}
+
+function findPrevious(ll, key){
+  if(!ll.head) {
+    return console.log('List is Empty')
+  }
+  let currNode = ll.head;
+  let previousNode = ll.head;
+  while ((currNode !== null) && (currNode.value !==key)) {
+    previousNode = currNode;
+    currNode = currNode.next;
+  }
+  return console.log(previousNode)
+}
+
+function findLast(ll) {
+  if(!ll.head) {
+    return console.log('List is empty')
+  }
+  let currNode = ll.head;
+  let nextNode = ll.head;
+  let size = ll.length;
+  for(let i = 0; i < size; i++) {
+    currNode = nextNode;
+    nextNode = nextNode.next;
+  }
+  return console.log(currNode);
+}
+
+function main(){
+  let SLL = setSLL()
+  display(SLL)
+  size(SLL)
+  isEmpty(SLL)
+  findPrevious(SLL, "Kat")
+  findLast(SLL)
 }
 
 main();
