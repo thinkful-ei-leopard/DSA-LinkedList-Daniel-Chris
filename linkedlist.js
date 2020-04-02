@@ -183,7 +183,8 @@ function main(){
   isEmpty(SLL)
   findPrevious(SLL, "Kat")
   findLast(SLL)
-  reverse(SLL)
+  // reverse(SLL)
+  thirdFromEnd(SLL)
 }
 
 main();
@@ -216,4 +217,22 @@ function reverse(ll) {
 
   ll.head = prevNode
   console.log(ll)
+}
+
+//Write an algorithm to find the 3rd element from the end of a linked list. Note You may be tempted to add a length property to your linked list class. The length property is not a typical property of linked list, therefore don't make any modification to the linked list class that is provided to you.
+
+function thirdFromEnd(ll) {
+  if(!ll.head) {
+    return console.log('list is empty')
+  }
+  let currNode = ll.head;
+  let nextNode = ll.head;
+  if(!nextNode.next.next) {
+    return console.log('List too short')
+  }
+  while(nextNode.next && nextNode.next.next) {
+    currNode = nextNode;
+    nextNode = nextNode.next;
+  }
+  console.log(currNode)
 }
