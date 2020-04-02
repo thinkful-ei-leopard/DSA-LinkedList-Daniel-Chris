@@ -191,3 +191,7 @@ main();
 //   main,
 //   LinkedList,
 // }
+
+// 4. Mystery Program 
+// Complexity: O(n^2)
+// It's a filter for duplicates. Loops through whole list, checking for adjacent values that match, then links around the redundant nodes.insertAt
