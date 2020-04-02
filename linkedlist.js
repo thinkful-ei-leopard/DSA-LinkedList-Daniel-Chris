@@ -183,6 +183,7 @@ function main(){
   isEmpty(SLL)
   findPrevious(SLL, "Kat")
   findLast(SLL)
+  reverse(SLL)
 }
 
 main();
@@ -195,3 +196,24 @@ main();
 // 4. Mystery Program 
 // Complexity: O(n^2)
 // It's a filter for duplicates. Loops through whole list, checking for adjacent values that match, then links around the redundant nodes.insertAt
+
+//5. Reverse a list
+
+function reverse(ll) {
+  if (!ll.head) {
+    return console.log('list is empty')
+  }
+  let prevNode = null
+  let nextNode = null
+  let currentNode = ll.head
+
+  while(currentNode != null){
+    nextNode = currentNode.next
+    currentNode.next = prevNode
+    prevNode = currentNode
+    currentNode = nextNode
+  }
+
+  ll.head = prevNode
+  console.log(ll)
+}
