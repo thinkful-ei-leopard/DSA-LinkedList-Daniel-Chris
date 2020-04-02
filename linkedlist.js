@@ -10,22 +10,25 @@ class LinkedList {
     this.head = null;
   }
   insertFirst(item){
-    this.head = new _Node(item,this.head)
+    this.head = new _Node(item,this.head);
   }
   insertLast(item) {
     if(this.head === null){
-      this.insertFirst(item)
+      this.insertFirst(item);
     }
     //find the end
     //creat the new node
-    let tempNode = this.head
+    let tempNode = this.head;
     while(tempNode.next !== null){
       tempNode = tempNode.next;
     }
-    tempNode.next = new _Node(item,null)
+    tempNode.next = new _Node(item,null);
   }
 }
 
 function main() {
   let ll = new LinkedList();
+  ll.insertFirst(5)
 }
+
+main()
