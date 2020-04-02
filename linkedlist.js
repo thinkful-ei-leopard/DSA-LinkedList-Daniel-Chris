@@ -12,7 +12,6 @@ class LinkedList {
   }
   insertFirst(item){
     this.head = new _Node(item,this.head);
-    console.log(this.head)
   }
   insertLast(item) {
     if(this.head === null){
@@ -24,16 +23,16 @@ class LinkedList {
     }
     tempNode.next = new _Node(item,null);
   }
-  insertBefore(item) {
+  insertBefore(item, key) {
     if (!this.head) {
       return null;
     }
-    if(this.head.value === item) {
+    if(this.head.value === key) {
       this.head = new _Node(item,this.head)
     }
     let currNode = this.head;
     let previousNode = this.head;
-    while ((currNode !== null) && (currNode.value !==item)) {
+    while ((currNode !== null) && (currNode.value !==key)) {
       previousNode = currNode;
       currNode = currNode.next;
     }
@@ -43,13 +42,13 @@ class LinkedList {
     }
     previousNode.next = new _Node(item, currNode);
   }
-  insertAfter(item) {
+  insertAfter(item, key) {
     if (!this.head) {
       return null;
     }
     let currNode = this.head;
-    let nextNode = this.this.head;
-    while ((currNode !== null) && (currNode.value !==item)) {
+    let nextNode = this.head;
+    while ((currNode !== null) && (currNode.value !== key)) {
       currNode = nextNode;
       nextNode = nextNode.next;
     }
@@ -73,10 +72,8 @@ class LinkedList {
       console.log('Invalid position')
       return;
     }
-    if (nextNode === null) {
-      currNode.next = new Node(item, null)
-    }
-    currNode.next = new Node(item, nextNode)
+
+    currNode.next = new _Node(item, nextNode)
   }
   remove(item){
     if (!this.head) {
@@ -123,8 +120,12 @@ function main() {
   SLL.insertFirst('Boomer')
   SLL.insertFirst('Apollo')
   SLL.insertLast('Tauhida')
-  // SLL.remove('squirrel')
-  console.log(SLL)
+  SLL.insertBefore('Athena', 'Boomer')
+  SLL.insertAfter('Hotdog', 'Helo')
+  SLL.insertAt('Kat', 3)
+  SLL.remove('Tauhida')
+  SLL.remove('squirrel')
+  console.dir(SLL)
   return SLL;
 }
 
